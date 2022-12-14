@@ -111,8 +111,16 @@ function onclickgreen(event)
                     
     let lastelement = document.querySelector(`div[rowind='${laststepobj.lastrow}'][colind='${laststepobj.lastcolumn}']`);
     //alert(lastelement.outerHTML);
-    event.target.innerHTML = lastelement.innerHTML ;
+    //alert(event.target.outerHTML);
+    if(event.target.outerHTML.includes("<img")) {
+        alert(lastelement.outerHTML);
+        event.target.parentElement= "";
+        event.target.parentElement.innerHTML = lastelement.innerHTML ;
     lastelement.innerHTML = " ";
+    }
+    else{
+    event.target.innerHTML = lastelement.innerHTML ;
+    lastelement.innerHTML = " ";}
     let green = document.querySelectorAll("div");
 
     for(let j=0;j<green.length;j++)
