@@ -110,7 +110,7 @@ function onclickgreen(event)
 {
                     
     let lastelement = document.querySelector(`div[rowind='${laststepobj.lastrow}'][colind='${laststepobj.lastcolumn}']`);
-    alert(lastelement.outerHTML);
+    //alert(lastelement.outerHTML);
     event.target.innerHTML = lastelement.innerHTML ;
     lastelement.innerHTML = " ";
     let green = document.querySelectorAll("div");
