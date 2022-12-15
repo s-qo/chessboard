@@ -113,7 +113,7 @@ function onclickgreen(event)
     //alert(lastelement.outerHTML);
     //alert(event.target.outerHTML);
     if(event.target.outerHTML.includes("<img")) {
-        alert(lastelement.outerHTML);
+     //   alert(lastelement.outerHTML);
         event.target.parentElement= "";
         event.target.parentElement.innerHTML = lastelement.innerHTML ;
     lastelement.innerHTML = " ";
@@ -199,7 +199,7 @@ function allimgclick(event)
         if(leftindx <= 7 && leftindy >=0)
         {
             let pcell = document.querySelector(`div[rowind='${leftindx}'][colind='${leftindy}']`);
-            if(pcell.innerHTML.includes("pawnb.png") && !pcell.innerHTML.includes("pawnw.png"))
+            if(pcell.innerHTML.includes("b.png") && !pcell.innerHTML.includes("w.png"))
             {
                 pcell.style.backgroundColor = "green";
                 pcell.addEventListener("click",onclickgreen);
@@ -208,7 +208,7 @@ function allimgclick(event)
         }
         let straightindx = rowind + 1;
         let mcell = document.querySelector(`div[rowind='${straightindx}'][colind='${colind}']`);
-        if(!mcell.innerHTML.includes("pawnw.png"))
+        if(!mcell.innerHTML.includes("w.png"))
         {
             mcell.style.backgroundColor = "green";
             mcell.addEventListener("click",onclickgreen);
@@ -220,7 +220,7 @@ function allimgclick(event)
         {
             
             let ncell = document.querySelector(`div[rowind='${rightindx}'][colind='${rightindy}']`);
-            if(ncell.innerHTML.includes("pawnb.png") && !ncell.innerHTML.includes("pawnw.png"))
+            if(ncell.innerHTML.includes("b.png") && !ncell.innerHTML.includes("w.png"))
             {
                 ncell.style.backgroundColor = "green";
                 ncell.addEventListener("click",onclickgreen);
@@ -247,7 +247,7 @@ function allimgclick(event)
         {
 
             let pcell = document.querySelector(`div[rowind='${leftindx}'][colind='${leftindy}']`);
-            if(pcell.innerHTML.includes("pawnw.png") && !pcell.innerHTML.includes("pawnb.png"))
+            if(pcell.innerHTML.includes("w.png") && !pcell.innerHTML.includes("b.png"))
             {
                 pcell.style.backgroundColor = "green";
                 pcell.addEventListener("click",onclickgreen);
@@ -256,7 +256,7 @@ function allimgclick(event)
         }
         let straightindx = rowind - 1;
         let mcell = document.querySelector(`div[rowind='${straightindx}'][colind='${colind}']`);
-        if(!mcell.innerHTML.includes("pawnb.png"))
+        if(!mcell.innerHTML.includes("b.png"))
         {
             mcell.style.backgroundColor = "green";
             mcell.addEventListener("click",onclickgreen);
@@ -268,20 +268,307 @@ function allimgclick(event)
         {
             
             let ncell = document.querySelector(`div[rowind='${rightindx}'][colind='${rightindy}']`);
-            if(ncell.innerHTML.includes("pawnw.png") && !ncell.innerHTML.includes("pawnb.png"))
+            if(ncell.innerHTML.includes("w.png") && !ncell.innerHTML.includes("b.png"))
             {
                 ncell.style.backgroundColor = "green";
                 ncell.addEventListener("click",onclickgreen);
             }
         }
-        
-        
+
         laststepobj.laststep = event.target.getAttribute("name");
         laststepobj.lastrow = parseInt(par.getAttribute("rowind"));
         laststepobj.lastcolumn = parseInt(par.getAttribute("colind"));
 
     }
-    
+    else if(!flag && event.target.name === "horsew.png")
+    {
+        let par = event.target.parentElement;
+        let rowind = parseInt(par.getAttribute("rowind"));
+        let colind = parseInt(par.getAttribute("colind"));
+        //straight move
+        let leftindx = rowind + 2;
+        let leftindy =  colind + 1;
+
+       // alert(leftindx+"hi"+leftindy);
+       if(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
+        {
+            
+            let pcell = document.querySelector(`div[rowind='${leftindx}'][colind='${leftindy}']`);
+            
+            if( !pcell.innerHTML.includes("w.png"))
+            {
+                //alert(pcell.outerHTML);
+                pcell.style.backgroundColor = "green";
+                pcell.addEventListener("click",onclickgreen);
+            }
+            
+        }
+
+         leftindx = rowind + 2;
+         leftindy =  colind - 1;
+
+       // alert(leftindx+"hi"+leftindy);
+       if(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
+        {
+            let pcell = document.querySelector(`div[rowind='${leftindx}'][colind='${leftindy}']`);
+            if(!pcell.innerHTML.includes("w.png"))
+            {
+                pcell.style.backgroundColor = "green";
+                pcell.addEventListener("click",onclickgreen);
+            }
+            
+        }
+
+        //right side move
+        leftindx = rowind + 1;
+         leftindy =  colind + 2;
+
+       // alert(leftindx+"hi"+leftindy);
+       if(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
+        {
+            let pcell = document.querySelector(`div[rowind='${leftindx}'][colind='${leftindy}']`);
+            if( !pcell.innerHTML.includes("w.png"))
+            {
+                pcell.style.backgroundColor = "green";
+                pcell.addEventListener("click",onclickgreen);
+            }
+            
+        }
+
+        leftindx = rowind - 1;
+         leftindy =  colind + 2;
+
+       // alert(leftindx+"hi"+leftindy);
+        if(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
+        {
+            let pcell = document.querySelector(`div[rowind='${leftindx}'][colind='${leftindy}']`);
+            if( !pcell.innerHTML.includes("w.png"))
+            {
+                pcell.style.backgroundColor = "green";
+                pcell.addEventListener("click",onclickgreen);
+            }
+            
+        }
+
+        //back straight side move
+        leftindx = rowind - 2;
+         leftindy =  colind + 1;
+
+       // alert(leftindx+"hi"+leftindy);
+       if(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
+        {
+            let pcell = document.querySelector(`div[rowind='${leftindx}'][colind='${leftindy}']`);
+            if( !pcell.innerHTML.includes("w.png"))
+            {
+                pcell.style.backgroundColor = "green";
+                pcell.addEventListener("click",onclickgreen);
+            }
+            
+        }
+        leftindx = rowind - 2;
+         leftindy =  colind - 1;
+
+       // alert(leftindx+"hi"+leftindy);
+       if(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
+        {
+            let pcell = document.querySelector(`div[rowind='${leftindx}'][colind='${leftindy}']`);
+            if( !pcell.innerHTML.includes("w.png"))
+            {
+                pcell.style.backgroundColor = "green";
+                pcell.addEventListener("click",onclickgreen);
+            }
+            
+        }
+        //left side move
+        leftindx = rowind + 1;
+         leftindy =  colind - 2;
+
+       // alert(leftindx+"hi"+leftindy);
+       if(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
+        {
+            let pcell = document.querySelector(`div[rowind='${leftindx}'][colind='${leftindy}']`);
+            if( !pcell.innerHTML.includes("w.png"))
+            {
+                pcell.style.backgroundColor = "green";
+                pcell.addEventListener("click",onclickgreen);
+            }
+            
+        }
+
+        leftindx = rowind - 1;
+        leftindy =  colind - 2;
+
+       // alert(leftindx+"hi"+leftindy);
+       if(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
+        {
+            let pcell = document.querySelector(`div[rowind='${leftindx}'][colind='${leftindy}']`);
+            if(!pcell.innerHTML.includes("w.png"))
+            {
+                pcell.style.backgroundColor = "green";
+                pcell.addEventListener("click",onclickgreen);
+            }
+            
+        }
+        laststepobj.laststep = event.target.getAttribute("name");
+        laststepobj.lastrow = parseInt(par.getAttribute("rowind"));
+        laststepobj.lastcolumn = parseInt(par.getAttribute("colind"));
+        console.log(laststepobj);
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    else if(flag && event.target.name === "horseb.png")
+    {
+       // alert("hii");
+        let par = event.target.parentElement;
+        let rowind = parseInt(par.getAttribute("rowind"));
+        let colind = parseInt(par.getAttribute("colind"));
+        //straight move
+        let leftindx = rowind + 2;
+        let leftindy =  colind + 1;
+
+       // alert(leftindx+"hi"+leftindy);
+       if(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
+        {
+            
+            let pcell = document.querySelector(`div[rowind='${leftindx}'][colind='${leftindy}']`);
+            
+            if( !pcell.innerHTML.includes("b.png"))
+            {
+                alert(pcell.outerHTML);
+                pcell.style.backgroundColor = "green";
+                pcell.addEventListener("click",onclickgreen);
+            }
+            
+        }
+
+         leftindx = rowind + 2;
+         leftindy =  colind - 1;
+
+       // alert(leftindx+"hi"+leftindy);
+       if(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
+        {
+            let pcell = document.querySelector(`div[rowind='${leftindx}'][colind='${leftindy}']`);
+            if(!pcell.innerHTML.includes("b.png"))
+            {
+                pcell.style.backgroundColor = "green";
+                pcell.addEventListener("click",onclickgreen);
+            }
+            
+        }
+
+        //right side move
+        leftindx = rowind + 1;
+         leftindy =  colind + 2;
+
+       // alert(leftindx+"hi"+leftindy);
+       if(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
+        {
+            let pcell = document.querySelector(`div[rowind='${leftindx}'][colind='${leftindy}']`);
+            if( !pcell.innerHTML.includes("b.png"))
+            {
+                pcell.style.backgroundColor = "green";
+                pcell.addEventListener("click",onclickgreen);
+            }
+            
+        }
+
+        leftindx = rowind - 1;
+         leftindy =  colind + 2;
+
+       // alert(leftindx+"hi"+leftindy);
+        if(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
+        {
+            let pcell = document.querySelector(`div[rowind='${leftindx}'][colind='${leftindy}']`);
+            if( !pcell.innerHTML.includes("b.png"))
+            {
+                pcell.style.backgroundColor = "green";
+                pcell.addEventListener("click",onclickgreen);
+            }
+            
+        }
+
+        //back straight side move
+        leftindx = rowind - 2;
+         leftindy =  colind + 1;
+
+       // alert(leftindx+"hi"+leftindy);
+       if(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
+        {
+            let pcell = document.querySelector(`div[rowind='${leftindx}'][colind='${leftindy}']`);
+           // alert("hi");
+            if( !pcell.innerHTML.includes("b.png"))
+            {
+                pcell.style.backgroundColor = "green";
+                pcell.addEventListener("click",onclickgreen);
+            }
+            
+        }
+        leftindx = rowind - 2;
+         leftindy =  colind - 1;
+
+       // alert(leftindx+"hi"+leftindy);
+       if(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
+        {
+            let pcell = document.querySelector(`div[rowind='${leftindx}'][colind='${leftindy}']`);
+            if( !pcell.innerHTML.includes("b.png"))
+            {
+                pcell.style.backgroundColor = "green";
+                pcell.addEventListener("click",onclickgreen);
+            }
+            
+        }
+        //left side move
+        leftindx = rowind + 1;
+         leftindy =  colind - 2;
+
+       // alert(leftindx+"hi"+leftindy);
+       if(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
+        {
+            let pcell = document.querySelector(`div[rowind='${leftindx}'][colind='${leftindy}']`);
+            if( !pcell.innerHTML.includes("b.png"))
+            {
+                pcell.style.backgroundColor = "green";
+                pcell.addEventListener("click",onclickgreen);
+            }
+            
+        }
+
+        leftindx = rowind - 1;
+        leftindy =  colind - 2;
+
+       // alert(leftindx+"hi"+leftindy);
+       if(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
+        {
+            let pcell = document.querySelector(`div[rowind='${leftindx}'][colind='${leftindy}']`);
+            if(!pcell.innerHTML.includes("b.png"))
+            {
+                pcell.style.backgroundColor = "green";
+                pcell.addEventListener("click",onclickgreen);
+            }
+            
+        }
+        laststepobj.laststep = event.target.getAttribute("name");
+        laststepobj.lastrow = parseInt(par.getAttribute("rowind"));
+        laststepobj.lastcolumn = parseInt(par.getAttribute("colind"));
+        console.log(laststepobj);
+
+    }
+
 
 }
 
