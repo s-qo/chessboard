@@ -174,12 +174,13 @@ function allimgclick(event)
             if(green[i].style.backgroundColor === "green")
            {
             //alert(green[i].getAttribute("rowind") + "  "+green[i].getAttribute("colind"));   
-            if((parseInt(green[i].getAttribute("rowind"))+parseInt(green[i].getAttribute("colind"))) % 2 === 1 )
-            green[i].style.backgroundColor = "grey";
-            else if((parseInt(green[i].getAttribute("rowind"))+parseInt(green[i].getAttribute("colind"))) % 2 === 0 )
-            {
-                green[i].style.backgroundColor = "white";
-            }
+                if((parseInt(green[i].getAttribute("rowind"))+parseInt(green[i].getAttribute("colind"))) % 2 === 1 )
+                green[i].style.backgroundColor = "grey";
+                else if((parseInt(green[i].getAttribute("rowind"))+parseInt(green[i].getAttribute("colind"))) % 2 === 0 )
+                {
+                    green[i].style.backgroundColor = "white";
+                }  
+                green[i].removeEventListener("click",onclickgreen); 
             }
         }
         laststepobj.laststep = "123";
@@ -198,39 +199,39 @@ function allimgclick(event)
         if(leftindx <= 7 && leftindy >=0)
         {
             let pcell = document.querySelector(`div[rowind='${leftindx}'][colind='${leftindy}']`);
-            pcell.style.backgroundColor = "green";
-            //alert(pcell.outerHTML);
+            if(pcell.innerHTML.includes("pawnb.png") && !pcell.innerHTML.includes("pawnw.png"))
+            {
+                pcell.style.backgroundColor = "green";
+                pcell.addEventListener("click",onclickgreen);
+            }
+            
         }
         let straightindx = rowind + 1;
-        document.querySelector(`div[rowind='${straightindx}'][colind='${colind}']`).style.backgroundColor = "green";
-        
+        let mcell = document.querySelector(`div[rowind='${straightindx}'][colind='${colind}']`);
+        if(!mcell.innerHTML.includes("pawnw.png"))
+        {
+            mcell.style.backgroundColor = "green";
+            mcell.addEventListener("click",onclickgreen);
+        }
         
         let rightindx = rowind + 1;
         let rightindy = colind + 1;
         if(rightindx >= 0 && rightindy <=7)
         {
             
-            document.querySelector(`div[rowind='${rightindx}'][colind='${rightindy}']`).style.backgroundColor = "green";
+            let ncell = document.querySelector(`div[rowind='${rightindx}'][colind='${rightindy}']`);
+            if(ncell.innerHTML.includes("pawnb.png") && !ncell.innerHTML.includes("pawnw.png"))
+            {
+                ncell.style.backgroundColor = "green";
+                ncell.addEventListener("click",onclickgreen);
+            }
         }
 
-        
-        
         laststepobj.laststep = event.target.getAttribute("name");
         laststepobj.lastrow = parseInt(par.getAttribute("rowind"));
         laststepobj.lastcolumn = parseInt(par.getAttribute("colind"));
         console.log(laststepobj);
-       let greenones = document.querySelectorAll("div[style*='green']");;
-        for(let i=0;i<greenones.length;i++)
-        {
-            greenones[i].addEventListener("click",onclickgreen);
-        }
-        
-        
 
-
-
-
-        
     }
     else if( flag && event.target.name === "pawnb.png")
     {
@@ -246,20 +247,32 @@ function allimgclick(event)
         {
 
             let pcell = document.querySelector(`div[rowind='${leftindx}'][colind='${leftindy}']`);
-            
-            pcell.style.backgroundColor = "green";
+            if(pcell.innerHTML.includes("pawnw.png") && !pcell.innerHTML.includes("pawnb.png"))
+            {
+                pcell.style.backgroundColor = "green";
+                pcell.addEventListener("click",onclickgreen);
+            }
             //alert(pcell.outerHTML);
         }
         let straightindx = rowind - 1;
-        document.querySelector(`div[rowind='${straightindx}'][colind='${colind}']`).style.backgroundColor = "green";
-        
+        let mcell = document.querySelector(`div[rowind='${straightindx}'][colind='${colind}']`);
+        if(!mcell.innerHTML.includes("pawnb.png"))
+        {
+            mcell.style.backgroundColor = "green";
+            mcell.addEventListener("click",onclickgreen);
+        }
         
         let rightindx = rowind - 1;
         let rightindy = colind + 1;
         if(rightindx >= 0 && rightindy <=7)
         {
             
-            document.querySelector(`div[rowind='${rightindx}'][colind='${rightindy}']`).style.backgroundColor = "green";
+            let ncell = document.querySelector(`div[rowind='${rightindx}'][colind='${rightindy}']`);
+            if(ncell.innerHTML.includes("pawnw.png") && !ncell.innerHTML.includes("pawnb.png"))
+            {
+                ncell.style.backgroundColor = "green";
+                ncell.addEventListener("click",onclickgreen);
+            }
         }
         
         
@@ -267,20 +280,9 @@ function allimgclick(event)
         laststepobj.lastrow = parseInt(par.getAttribute("rowind"));
         laststepobj.lastcolumn = parseInt(par.getAttribute("colind"));
 
-        
-
-        let greenones = document.querySelectorAll("div[style*='green']");;
-        for(let i=0;i<greenones.length;i++)
-        {
-            greenones[i].addEventListener("click",onclickgreen);
-        }
-        
-        
-
-        
-
-        
     }
+    
+
 }
 
 for(let i=0;i<chess.length;i++)
