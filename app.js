@@ -553,13 +553,7 @@ function allimgclick(event)
         console.log(laststepobj);
 
     }
-
-
-
-
-
-
-    else     if(!flag && event.target.name === "bishopw.png")
+    else if(!flag && event.target.name === "bishopw.png")
     {
         let par = event.target.parentElement;
         let rowind = parseInt(par.getAttribute("rowind"));
@@ -616,9 +610,6 @@ function allimgclick(event)
                 }
             }else break;
         }
-       
-
-        
         leftindx = rowind ;
         leftindy =  colind ;
         while(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
@@ -643,9 +634,6 @@ function allimgclick(event)
             }
             else break;
         }
-
-
-        
         leftindx = rowind ;
         leftindy =  colind ;
         while(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
@@ -676,18 +664,7 @@ function allimgclick(event)
         console.log(laststepobj);
 
     }
-
-
-
-
-
-
-
-
-
-
-
-    else     if(flag && event.target.name === "bishopb.png")
+    else if(flag && event.target.name === "bishopb.png")
     {
         let par = event.target.parentElement;
         let rowind = parseInt(par.getAttribute("rowind"));
@@ -743,9 +720,6 @@ function allimgclick(event)
                 }
             }else break;
         }
-       
-
-        
         leftindx = rowind ;
         leftindy =  colind ;
         while(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
@@ -770,9 +744,6 @@ function allimgclick(event)
             }
             else break;
         }
-
-
-        
         leftindx = rowind ;
         leftindy =  colind ;
         while(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
@@ -803,11 +774,227 @@ function allimgclick(event)
         console.log(laststepobj);
 
     }
+    else if(!flag && event.target.name === "rookw.png")
+    {
+        let par = event.target.parentElement;
+        let rowind = parseInt(par.getAttribute("rowind"));
+        let colind = parseInt(par.getAttribute("colind"));
+        
+        
+        let leftindx = rowind ;
+        let leftindy =  colind ;
+        while(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
+        {
+            leftindx = leftindx ;
+            leftindy =  leftindy + 1;
+            if(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
+            {
+                let pcell = document.querySelector(`div[rowind='${leftindx}'][colind='${leftindy}']`);
+            
+                if(!pcell.innerHTML.includes("w.png"))
+                {
+                    pcell.style.backgroundColor = "green";
+                    pcell.addEventListener("click",onclickgreen);
+                    if(pcell.innerHTML.includes("b.png"))
+                    break;
+                }
+                else if(pcell.innerHTML.includes("w.png"))
+                {
+                
+                    break;
 
+                }
+                
+            }
+            else break;
+        }
+        
+        leftindx = rowind ;
+        leftindy =  colind ;
+        while(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
+        {
+            leftindx = leftindx ;
+            leftindy =  leftindy - 1;
+            if(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
+            {
+                let pcell = document.querySelector(`div[rowind='${leftindx}'][colind='${leftindy}']`);
+                if(!pcell.innerHTML.includes("w.png"))
+                {
+                    pcell.style.backgroundColor = "green";
+                    pcell.addEventListener("click",onclickgreen);
+                    if(pcell.innerHTML.includes("b.png"))
+                    break;
+                }
+                else if(pcell.innerHTML.includes("w.png"))
+                {
+                    break;
+                }
+            }else break;
+        }
+        leftindx = rowind ;
+        leftindy =  colind ;
+        while(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
+        {
+            leftindx = leftindx + 1;
+            leftindy =  leftindy ;
+            if(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
+            {
+                let pcell = document.querySelector(`div[rowind='${leftindx}'][colind='${leftindy}']`);
+                if(!pcell.innerHTML.includes("w.png"))
+                {
+                    pcell.style.backgroundColor = "green";
+                    pcell.addEventListener("click",onclickgreen);
+                    if(pcell.innerHTML.includes("b.png"))
+                    break;
+                }
 
+                else if(pcell.innerHTML.includes("w.png"))
+                {
+                    break;
+                }
+            }
+            else break;
+        }
+        leftindx = rowind ;
+        leftindy =  colind ;
+        while(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
+        {
+            leftindx = leftindx - 1;
+            leftindy =  leftindy ;
+            let pcell = document.querySelector(`div[rowind='${leftindx}'][colind='${leftindy}']`);
+            if(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
+            {
+                if(!pcell.innerHTML.includes("w.png"))
+                {
+                    pcell.style.backgroundColor = "green";
+                    pcell.addEventListener("click",onclickgreen);
+                    if(pcell.innerHTML.includes("b.png"))
+                    break;
+                }
+                else if(pcell.innerHTML.includes("w.png"))
+                {
+                    break;
+                }
+            }
+            else break;
+        }
 
+        laststepobj.laststep = event.target.getAttribute("name");
+        laststepobj.lastrow = parseInt(par.getAttribute("rowind"));
+        laststepobj.lastcolumn = parseInt(par.getAttribute("colind"));
+        console.log(laststepobj);
 
+    }
+    else if(flag && event.target.name === "rookb.png")
+    {
+        let par = event.target.parentElement;
+        let rowind = parseInt(par.getAttribute("rowind"));
+        let colind = parseInt(par.getAttribute("colind"));
+        
+        
+        let leftindx = rowind ;
+        let leftindy =  colind ;
+        while(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
+        {
+            leftindx = leftindx ;
+            leftindy =  leftindy + 1;
+            if(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
+            {
+                let pcell = document.querySelector(`div[rowind='${leftindx}'][colind='${leftindy}']`);
+            
+                if(!pcell.innerHTML.includes("b.png"))
+                {
+                    pcell.style.backgroundColor = "green";
+                    pcell.addEventListener("click",onclickgreen);
+                    if(pcell.innerHTML.includes("w.png"))
+                    break;
+                }
+                else if(pcell.innerHTML.includes("b.png"))
+                {
+                
+                    break;
 
+                }
+            }
+            else break;
+        }
+        
+        leftindx = rowind ;
+        leftindy =  colind ;
+        while(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
+        {
+            leftindx = leftindx ;
+            leftindy =  leftindy - 1;
+            if(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
+            {
+                let pcell = document.querySelector(`div[rowind='${leftindx}'][colind='${leftindy}']`);
+                if(!pcell.innerHTML.includes("b.png"))
+                {
+                    pcell.style.backgroundColor = "green";
+                    pcell.addEventListener("click",onclickgreen);
+                    if(pcell.innerHTML.includes("w.png"))
+                    break;
+                }
+                else if(pcell.innerHTML.includes("b.png"))
+                {
+                    break;
+                }
+            }else break;
+        }
+        leftindx = rowind ;
+        leftindy =  colind ;
+        while(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
+        {
+            leftindx = leftindx + 1;
+            leftindy =  leftindy ;
+            if(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
+            {
+                let pcell = document.querySelector(`div[rowind='${leftindx}'][colind='${leftindy}']`);
+                if(!pcell.innerHTML.includes("b.png"))
+                {
+                    pcell.style.backgroundColor = "green";
+                    pcell.addEventListener("click",onclickgreen);
+                    if(pcell.innerHTML.includes("w.png"))
+                    break;
+                }
+
+                else if(pcell.innerHTML.includes("b.png"))
+                {
+                    break;
+                }
+            }
+            else break;
+        }
+        leftindx = rowind ;
+        leftindy =  colind ;
+        while(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
+        {
+            leftindx = leftindx - 1;
+            leftindy =  leftindy ;
+            let pcell = document.querySelector(`div[rowind='${leftindx}'][colind='${leftindy}']`);
+            if(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
+            {
+                if(!pcell.innerHTML.includes("b.png"))
+                {
+                    pcell.style.backgroundColor = "green";
+                    pcell.addEventListener("click",onclickgreen);
+                    if(pcell.innerHTML.includes("w.png"))
+                    break;
+                }
+                else if(pcell.innerHTML.includes("b.png"))
+                {
+                    break;
+                }
+            }
+            else break;
+        }
+
+        laststepobj.laststep = event.target.getAttribute("name");
+        laststepobj.lastrow = parseInt(par.getAttribute("rowind"));
+        laststepobj.lastcolumn = parseInt(par.getAttribute("colind"));
+        console.log(laststepobj);
+
+    }
 }
 
 for(let i=0;i<chess.length;i++)
