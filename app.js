@@ -449,7 +449,7 @@ function allimgclick(event)
             
             if( !pcell.innerHTML.includes("b.png"))
             {
-                alert(pcell.outerHTML);
+                //alert(pcell.outerHTML);
                 pcell.style.backgroundColor = "green";
                 pcell.addEventListener("click",onclickgreen);
             }
