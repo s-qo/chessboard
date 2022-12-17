@@ -1,8 +1,6 @@
 let chess = document.getElementById("chess");
 function  display()
 {
-    
-    
     for(let i=0;i<8;i++)
     {
         let div = document.createElement("div");
@@ -91,9 +89,6 @@ function  display()
 }
 display();
 
-
-
-
 chess = document.querySelectorAll("img");
 let laststepobj = {
     laststep: "123",
@@ -102,13 +97,11 @@ let laststepobj = {
 
 };
 
-
 let flag = false;
 let greenoness = [];
 
 function onclickgreen(event)
-{
-                    
+{          
     let lastelement = document.querySelector(`div[rowind='${laststepobj.lastrow}'][colind='${laststepobj.lastcolumn}']`);
     //alert(lastelement.outerHTML);
     //alert(event.target.outerHTML);
@@ -125,7 +118,6 @@ function onclickgreen(event)
 
     for(let j=0;j<green.length;j++)
     {
-         
         if(green[j].style.backgroundColor === "green")
        {
         //alert(green[i].getAttribute("rowind") + "  "+green[i].getAttribute("colind"));   
@@ -140,21 +132,14 @@ function onclickgreen(event)
 
             for(let i=0;i<chess.length;i++)
             {
-    
                 chess[i].removeEventListener("click",allimgclick);
-    
-    
             }
 
             for(let i=0;i<chess.length;i++)
             {
-    
                 chess[i].addEventListener("click",allimgclick);
-    
-    
             }
         }
-        
     }
 
     flag = !flag;
@@ -162,10 +147,8 @@ function onclickgreen(event)
 
 function allimgclick(event)
 {
-        
     if((event.target.getAttribute("name")).includes(laststepobj.laststep.slice(laststepobj.laststep.length-5,laststepobj.laststep.length)))
     {
-        
         let green = document.querySelectorAll("div");
         
         for(let i=0;i<green.length;i++)
@@ -214,7 +197,18 @@ function allimgclick(event)
             mcell.style.backgroundColor = "green";
             mcell.addEventListener("click",onclickgreen);
         }
-        
+        if(rowind === 1)
+        {
+            straightindx = rowind + 2;
+            mcell = document.querySelector(`div[rowind='${straightindx}'][colind='${colind}']`);
+       // alert(mcell.outerHTML);
+            if(!mcell.innerHTML.includes("w.png"))
+            {
+                mcell.style.backgroundColor = "green";
+                mcell.addEventListener("click",onclickgreen);
+            }
+        }
+
         let rightindx = rowind + 1;
         let rightindy = colind + 1;
         if(rightindx >= 0 && rightindy <=7)
@@ -263,6 +257,18 @@ function allimgclick(event)
             mcell.addEventListener("click",onclickgreen);
         }
         
+        if(rowind === 6)
+        {
+            straightindx = rowind - 2;
+            mcell = document.querySelector(`div[rowind='${straightindx}'][colind='${colind}']`);
+            if(!mcell.innerHTML.includes("b.png"))
+            {
+                mcell.style.backgroundColor = "green";
+                mcell.addEventListener("click",onclickgreen);
+            }
+        }
+
+
         let rightindx = rowind - 1;
         let rightindy = colind + 1;
         if(rightindx >= 0 && rightindy <=7)
@@ -333,7 +339,6 @@ function allimgclick(event)
                 pcell.style.backgroundColor = "green";
                 pcell.addEventListener("click",onclickgreen);
             }
-            
         }
 
         leftindx = rowind - 1;
@@ -364,7 +369,6 @@ function allimgclick(event)
                 pcell.style.backgroundColor = "green";
                 pcell.addEventListener("click",onclickgreen);
             }
-            
         }
         leftindx = rowind - 2;
          leftindy =  colind - 1;
@@ -378,7 +382,6 @@ function allimgclick(event)
                 pcell.style.backgroundColor = "green";
                 pcell.addEventListener("click",onclickgreen);
             }
-            
         }
         //left side move
         leftindx = rowind + 1;
@@ -393,7 +396,6 @@ function allimgclick(event)
                 pcell.style.backgroundColor = "green";
                 pcell.addEventListener("click",onclickgreen);
             }
-            
         }
 
         leftindx = rowind - 1;
@@ -408,13 +410,11 @@ function allimgclick(event)
                 pcell.style.backgroundColor = "green";
                 pcell.addEventListener("click",onclickgreen);
             }
-            
         }
         laststepobj.laststep = event.target.getAttribute("name");
         laststepobj.lastrow = parseInt(par.getAttribute("rowind"));
         laststepobj.lastcolumn = parseInt(par.getAttribute("colind"));
         console.log(laststepobj);
-
     }
     else if(flag && event.target.name === "horseb.png")
     {
@@ -438,7 +438,6 @@ function allimgclick(event)
                 pcell.style.backgroundColor = "green";
                 pcell.addEventListener("click",onclickgreen);
             }
-            
         }
 
          leftindx = rowind + 2;
@@ -452,8 +451,7 @@ function allimgclick(event)
             {
                 pcell.style.backgroundColor = "green";
                 pcell.addEventListener("click",onclickgreen);
-            }
-            
+            }   
         }
 
         //right side move
@@ -468,8 +466,7 @@ function allimgclick(event)
             {
                 pcell.style.backgroundColor = "green";
                 pcell.addEventListener("click",onclickgreen);
-            }
-            
+            }   
         }
 
         leftindx = rowind - 1;
@@ -484,7 +481,6 @@ function allimgclick(event)
                 pcell.style.backgroundColor = "green";
                 pcell.addEventListener("click",onclickgreen);
             }
-            
         }
 
         //back straight side move
@@ -501,7 +497,6 @@ function allimgclick(event)
                 pcell.style.backgroundColor = "green";
                 pcell.addEventListener("click",onclickgreen);
             }
-            
         }
         leftindx = rowind - 2;
          leftindy =  colind - 1;
@@ -515,13 +510,11 @@ function allimgclick(event)
                 pcell.style.backgroundColor = "green";
                 pcell.addEventListener("click",onclickgreen);
             }
-            
         }
         //left side move
         leftindx = rowind + 1;
          leftindy =  colind - 2;
 
-       // alert(leftindx+"hi"+leftindy);
        if(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
         {
             let pcell = document.querySelector(`div[rowind='${leftindx}'][colind='${leftindy}']`);
@@ -530,9 +523,7 @@ function allimgclick(event)
                 pcell.style.backgroundColor = "green";
                 pcell.addEventListener("click",onclickgreen);
             }
-            
         }
-
         leftindx = rowind - 1;
         leftindy =  colind - 2;
 
@@ -545,7 +536,6 @@ function allimgclick(event)
                 pcell.style.backgroundColor = "green";
                 pcell.addEventListener("click",onclickgreen);
             }
-            
         }
         laststepobj.laststep = event.target.getAttribute("name");
         laststepobj.lastrow = parseInt(par.getAttribute("rowind"));
@@ -558,7 +548,6 @@ function allimgclick(event)
         let par = event.target.parentElement;
         let rowind = parseInt(par.getAttribute("rowind"));
         let colind = parseInt(par.getAttribute("colind"));
-        
         
         let leftindx = rowind ;
         let leftindy =  colind ;
@@ -581,9 +570,7 @@ function allimgclick(event)
                 {
                 
                     break;
-
                 }
-                
             }
             else break;
         }
@@ -669,8 +656,7 @@ function allimgclick(event)
         let par = event.target.parentElement;
         let rowind = parseInt(par.getAttribute("rowind"));
         let colind = parseInt(par.getAttribute("colind"));
-        
-        
+
         let leftindx = rowind ;
         let leftindy =  colind ;
         while(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
@@ -697,7 +683,6 @@ function allimgclick(event)
             }
             else break;
         }
-        
         leftindx = rowind ;
         leftindy =  colind ;
         while(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
@@ -772,15 +757,13 @@ function allimgclick(event)
         laststepobj.lastrow = parseInt(par.getAttribute("rowind"));
         laststepobj.lastcolumn = parseInt(par.getAttribute("colind"));
         console.log(laststepobj);
-
     }
     else if(!flag && event.target.name === "rookw.png")
     {
         let par = event.target.parentElement;
         let rowind = parseInt(par.getAttribute("rowind"));
         let colind = parseInt(par.getAttribute("colind"));
-        
-        
+
         let leftindx = rowind ;
         let leftindy =  colind ;
         while(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
@@ -802,13 +785,11 @@ function allimgclick(event)
                 {
                 
                     break;
-
                 }
                 
             }
             else break;
         }
-        
         leftindx = rowind ;
         leftindy =  colind ;
         while(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
@@ -847,7 +828,6 @@ function allimgclick(event)
                     if(pcell.innerHTML.includes("b.png"))
                     break;
                 }
-
                 else if(pcell.innerHTML.includes("w.png"))
                 {
                     break;
@@ -878,7 +858,6 @@ function allimgclick(event)
             }
             else break;
         }
-
         laststepobj.laststep = event.target.getAttribute("name");
         laststepobj.lastrow = parseInt(par.getAttribute("rowind"));
         laststepobj.lastcolumn = parseInt(par.getAttribute("colind"));
@@ -890,8 +869,6 @@ function allimgclick(event)
         let par = event.target.parentElement;
         let rowind = parseInt(par.getAttribute("rowind"));
         let colind = parseInt(par.getAttribute("colind"));
-        
-        
         let leftindx = rowind ;
         let leftindy =  colind ;
         while(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
@@ -911,14 +888,11 @@ function allimgclick(event)
                 }
                 else if(pcell.innerHTML.includes("b.png"))
                 {
-                
                     break;
-
                 }
             }
             else break;
         }
-        
         leftindx = rowind ;
         leftindy =  colind ;
         while(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
@@ -957,7 +931,6 @@ function allimgclick(event)
                     if(pcell.innerHTML.includes("w.png"))
                     break;
                 }
-
                 else if(pcell.innerHTML.includes("b.png"))
                 {
                     break;
@@ -988,14 +961,12 @@ function allimgclick(event)
             }
             else break;
         }
-
         laststepobj.laststep = event.target.getAttribute("name");
         laststepobj.lastrow = parseInt(par.getAttribute("rowind"));
         laststepobj.lastcolumn = parseInt(par.getAttribute("colind"));
         console.log(laststepobj);
 
     }
-
     else if(!flag && event.target.name === "queenw.png")
     {
         let par = event.target.parentElement;
@@ -1021,15 +992,11 @@ function allimgclick(event)
                 }
                 else if(pcell.innerHTML.includes("w.png"))
                 {
-                
                     break;
-
                 }
-                
             }
             else break;
         }
-        
         leftindx = rowind ;
         leftindy =  colind ;
         while(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
@@ -1118,15 +1085,11 @@ function allimgclick(event)
                 }
                 else if(pcell.innerHTML.includes("w.png"))
                 {
-                
                     break;
-
                 }
-                
             }
             else break;
         }
-        
         leftindx = rowind ;
         leftindy =  colind ;
         while(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
@@ -1195,10 +1158,7 @@ function allimgclick(event)
                 }
             }
             else break;
-        }
-
-
-        
+        }      
         laststepobj.laststep = event.target.getAttribute("name");
         laststepobj.lastrow = parseInt(par.getAttribute("rowind"));
         laststepobj.lastcolumn = parseInt(par.getAttribute("colind"));
@@ -1230,11 +1190,8 @@ function allimgclick(event)
                 }
                 else if(pcell.innerHTML.includes("b.png"))
                 {
-                
                     break;
-
                 }
-                
             }
             else break;
         }
@@ -1277,7 +1234,6 @@ function allimgclick(event)
                     if(pcell.innerHTML.includes("w.png"))
                     break;
                 }
-
                 else if(pcell.innerHTML.includes("b.png"))
                 {
                     break;
@@ -1327,11 +1283,8 @@ function allimgclick(event)
                 }
                 else if(pcell.innerHTML.includes("b.png"))
                 {
-                
                     break;
-
                 }
-                
             }
             else break;
         }
@@ -1405,33 +1358,11 @@ function allimgclick(event)
             }
             else break;
         }
-
-
-        
         laststepobj.laststep = event.target.getAttribute("name");
         laststepobj.lastrow = parseInt(par.getAttribute("rowind"));
         laststepobj.lastcolumn = parseInt(par.getAttribute("colind"));
         console.log(laststepobj);
-
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     else if(!flag && event.target.name === "kingw.png")
     {
         let par = event.target.parentElement;
@@ -1450,7 +1381,6 @@ function allimgclick(event)
                 pcell.style.backgroundColor = "green";
                 pcell.addEventListener("click",onclickgreen);
             }
-            
         }
 
         let straightindx = rowind + 1;
@@ -1488,14 +1418,11 @@ function allimgclick(event)
                 pcell.style.backgroundColor = "green";
                 pcell.addEventListener("click",onclickgreen);
             }
-            
         }
         
         straightindx = rowind - 1;
         if(straightindx <= 7 && straightindx >= 0 && colind >=0 && colind <=7)
         {
-            
-         
             mcell = document.querySelector(`div[rowind='${straightindx}'][colind='${colind}']`);
        // alert(mcell.outerHTML);
             if(!mcell.innerHTML.includes("w.png"))
@@ -1508,7 +1435,6 @@ function allimgclick(event)
          rightindy = colind - 1;
         if(leftindx <= 7 && leftindx >= 0 && leftindy >=0 && leftindy <=7)
         {
-            
             let ncell = document.querySelector(`div[rowind='${rightindx}'][colind='${rightindy}']`);
             if( !ncell.innerHTML.includes("w.png"))
             {
@@ -1516,7 +1442,6 @@ function allimgclick(event)
                 ncell.addEventListener("click",onclickgreen);
             }
         }
-
 
          leftindx = rowind ;
          leftindy =  colind + 1;
@@ -1530,9 +1455,7 @@ function allimgclick(event)
                 pcell.style.backgroundColor = "green";
                 pcell.addEventListener("click",onclickgreen);
             }
-            
         }
-        
         leftindx = rowind ;
         leftindy =  colind - 1;
 
@@ -1544,15 +1467,12 @@ function allimgclick(event)
            {
                pcell.style.backgroundColor = "green";
                pcell.addEventListener("click",onclickgreen);
-           }
-           
+           }  
        }
-
         laststepobj.laststep = event.target.getAttribute("name");
         laststepobj.lastrow = parseInt(par.getAttribute("rowind"));
         laststepobj.lastcolumn = parseInt(par.getAttribute("colind"));
         console.log(laststepobj);
-
     }
     else if(flag && event.target.name === "kingb.png")
     {
@@ -1572,7 +1492,6 @@ function allimgclick(event)
                 pcell.style.backgroundColor = "green";
                 pcell.addEventListener("click",onclickgreen);
             }
-            
         }
 
         let straightindx = rowind + 1;
@@ -1612,14 +1531,11 @@ function allimgclick(event)
                 pcell.style.backgroundColor = "green";
                 pcell.addEventListener("click",onclickgreen);
             }
-            
         }
         
         straightindx = rowind - 1;
         if(straightindx <= 7 && straightindx >= 0 && colind >=0 && colind <=7)
         {
-            
-         
            let mcell = document.querySelector(`div[rowind='${straightindx}'][colind='${colind}']`);
        // alert(mcell.outerHTML);
             if(!mcell.innerHTML.includes("b.png"))
@@ -1640,8 +1556,6 @@ function allimgclick(event)
                 ncell.addEventListener("click",onclickgreen);
             }
         }
-
-
          leftindx = rowind ;
          leftindy =  colind + 1;
 
@@ -1654,7 +1568,6 @@ function allimgclick(event)
                 pcell.style.backgroundColor = "green";
                 pcell.addEventListener("click",onclickgreen);
             }
-            
         }
         
         leftindx = rowind ;
@@ -1669,21 +1582,16 @@ function allimgclick(event)
                pcell.style.backgroundColor = "green";
                pcell.addEventListener("click",onclickgreen);
            }
-           
        }
 
         laststepobj.laststep = event.target.getAttribute("name");
         laststepobj.lastrow = parseInt(par.getAttribute("rowind"));
         laststepobj.lastcolumn = parseInt(par.getAttribute("colind"));
         console.log(laststepobj);
-
     }
 }
 
 for(let i=0;i<chess.length;i++)
 {
-    
     chess[i].addEventListener("click",allimgclick);
-    
-    
 }
