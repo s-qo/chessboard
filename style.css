@@ -5,11 +5,30 @@
 #chess
  {
      display: flex;
-     height: 640px;
+     height: 560px;
      width: 640px;
      border: 1px solid black;
      transition: 5s;
  }
+
+ #title
+ {
+     display: flex;
+     width: 640px;
+    justify-content: center;
+     border: 1px solid black;
+     transition: 5s;
+ }
+
+ #outertitle
+ {
+     display: flex;
+     
+    justify-content: center;
+     
+     transition: 5s;
+ }
+
 
  #outer
  {
@@ -21,7 +40,7 @@
 
  #chess div
  {
-     height: 80px;
+     height: 70px;
      width:80px;
      border: 0.5px solid black;
      
@@ -29,7 +48,7 @@
 
  img
  {
-    height: 70px;
+    height: 60px;
     width: 70px;
     
  }

@@ -143,6 +143,15 @@ function onclickgreen(event)
     }
 
     flag = !flag;
+    let h3 = document.querySelector("h3");
+    if(flag)
+    {
+        h3.innerHTML = "Black player's turn";
+    }
+    else if(!flag)
+    {
+        h3.innerHTML = "White player's turn";
+    }
     let kingw = document.querySelector("img[src='kingw.png']");
     if(!kingw)
     {
