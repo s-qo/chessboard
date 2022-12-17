@@ -8,6 +8,7 @@
      height: 640px;
      width: 640px;
      border: 1px solid black;
+     transition: 5s;
  }
 
  #outer
