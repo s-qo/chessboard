@@ -1,4 +1,3 @@
-let chess = document.getElementById("chess");
 function  display()
 {
     for(let i=0;i<8;i++)
@@ -84,12 +83,13 @@ function  display()
             temp.style.alignItems = "center";
             div.appendChild(temp);
         }
-        chess.appendChild(div);
+        let chess2 = document.getElementById("chess");
+        chess2.appendChild(div);
     }
 }
 display();
 
-chess = document.querySelectorAll("img");
+
 let laststepobj = {
     laststep: "123",
     lastrow: -1,
@@ -128,7 +128,7 @@ function onclickgreen(event)
                 green[j].style.backgroundColor = "white";
             }
             green[j].removeEventListener("click",onclickgreen);
-            chess = document.querySelectorAll("img");
+            let chess = document.querySelectorAll("img");
 
             for(let i=0;i<chess.length;i++)
             {
@@ -143,6 +143,30 @@ function onclickgreen(event)
     }
 
     flag = !flag;
+    let kingw = document.querySelector("img[src='kingw.png']");
+    if(!kingw)
+    {
+        alert("Black wins!");
+        let chess1 = document.querySelectorAll("img");
+        document.getElementById("chess").innerHTML = "";
+        display();
+        
+    }
+    let kingb = document.querySelector("img[src='kingb.png']");
+    if(!kingb)
+    {
+        alert("White wins!");
+        let chess1 = document.querySelectorAll("img");
+        document.getElementById("chess").innerHTML = "";
+        display();
+        
+    }
+    let chess2 = document.querySelectorAll("img");
+
+    for(let i=0;i<chess2.length;i++)
+    {
+        chess2[i].addEventListener("click",allimgclick);
+    }
 }
 
 function allimgclick(event)
@@ -1591,7 +1615,11 @@ function allimgclick(event)
     }
 }
 
-for(let i=0;i<chess.length;i++)
+
+let chess1 =  document.querySelectorAll("img");
+
+for(let i=0;i<chess1.length;i++)
 {
-    chess[i].addEventListener("click",allimgclick);
+    
+    chess1[i].addEventListener("click",allimgclick);
 }
