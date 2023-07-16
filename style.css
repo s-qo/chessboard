@@ -40,15 +40,15 @@
 
  #chess div
  {
-      height: 9vw;
-     width: 9vw;
-     border: 0.5px solid blue;
+      height: 11vw;
+     width: 11vw;
+     border: 0.5px solid black;
  }
 
  img
  {
-    height: 8vw;
-    width: 8vw;
+    height: 10vw;
+    width: 10vw;
     
  }
 
@@ -61,7 +61,7 @@
  {
       height: 8vh;
      width: 8vh;
-     border: 0.5px solid blue;
+     border: 0.5px solid black;
  }
   
 }
