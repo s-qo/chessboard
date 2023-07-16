@@ -5,8 +5,8 @@
 #chess
  {
      display: flex;
-     height: 560px;
-     width: 640px;
+     
+     
      border: 1px solid black;
      transition: 5s;
  }
@@ -14,7 +14,7 @@
  #title
  {
      display: flex;
-     width: 640px;
+     width: 100%;
     justify-content: center;
      border: 1px solid black;
      transition: 5s;
@@ -40,16 +40,28 @@
 
  #chess div
  {
-     height: 70px;
-     width:80px;
-     border: 0.5px solid black;
-     
+      height: 11vw;
+     width: 11vw;
+     border: 0.5px solid blue;
  }
 
  img
  {
-    height: 60px;
-    width: 70px;
+    height: 10vw;
+    width: 10vw;
     
  }
 
+@media only screen and (min-width: 768px){
+  img{
+    height: 7vh;
+    width: 7vh;
+  }
+  #chess div
+ {
+      height: 8vh;
+     width: 8vh;
+     border: 0.5px solid blue;
+ }
+  
+}
